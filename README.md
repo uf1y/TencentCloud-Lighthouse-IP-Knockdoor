@@ -9,14 +9,22 @@
 
 ## 需求
 
-客户端向服务端指定端口敲门（请求一个特定的URL），服务端通过腾讯云API，在防火墙上添加客户端IP地址，允许客户端访问其他业务端口。
+客户端向服务端指定端口敲门（请求一个特定的URL），服务端通过腾讯云API，在防火墙上创建规则，允许客户端IP访问其他业务端口。
 
 <img width="60%" alt="image" border="1" src="https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor/assets/117698857/9df33c47-a05b-42b9-a6d0-176259c4abde">
 
 # Knockd服务端安装使用
+## 基本条件
 
+```
+pip install tornado
+pip install dot_env
+pip install tencentcloud-sdk-python
+```
+
+## 安装运行
 ```bash
-# change .env file before running.
+# 使用前请先修改配置文件.env
 python knockd_start.py
 ```
 
