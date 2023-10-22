@@ -74,6 +74,17 @@ curl  -H "Referer:https://www.baidu..com/" \
 
 ## 防火墙配置结果
 
+服务端收到请求后的日志：
+```bash
+>python knockd_start.py
+2023-10-22 18:04:51,708 - root - INFO - Knocking from client:83.94.156.180
+2023-10-22 18:04:51,940 - root - ERROR - [TencentCloudSDKException] code:InvalidParameter.FirewallRulesExist message:防火墙规则 `[('TCP', '80,443,3389', '83.94.156.180', 'ACCEPT')]` 已经存在。 requestId:e435b07c-2b97-4abb-ace8-d4f352ddbbae9
+2023-10-22 18:04:51,940 - root - INFO - OK
+2023-10-22 18:04:51,941 - tornado.access - ERROR - 500 GET /favico.ico (83.94.156.180) 234.08ms
+```
+
+防火墙配置结果：
+
 <img width="80%" alt="image" border="1" src="https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor/assets/117698857/29c6afef-0303-4849-8b74-123944b33930">
 
 # 关键说明
@@ -105,7 +116,7 @@ MESSAGE_FAILURE='500 Internal Server Error'
 # 防火墙要开通的端口，逗号分隔
 # FW_PERMIT_PORTS='22,80,443'
 # FW_PERMIT_PORTS='22,'
-FW_PERMIT_PORTS_TCP='80，443,3389'
+FW_PERMIT_PORTS_TCP='80,443,3389'
 # FW_PERMIT_PORTS_UDP='514,'
 FW_PERMIT_PORTS_UDP=''
 # 防火墙规则前缀
