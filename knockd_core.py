@@ -29,8 +29,8 @@ class LightHouse(object):
     轻量级主机敲门
     """
     _days_rule_expires = int(os.getenv('DAYS_RULE_EXPIRES', '30'))
-    _end_point = "lighthouse.tencentcloudapi.com"
-    _region = 'ap-shanghai'
+    _end_point = os.getenv('TENCENT_CLOUD_ACCESS_POINT', 'lighthouse.tencentcloudapi.com')
+    _region = os.getenv('TENCENT_CLOUD_REGION', 'ap-shanghai')
     def __init__(self, instance_id, secret_id, secret_key):
         self.instance_id = instance_id
         cred = credential.Credential(secret_id, secret_key)
