@@ -6,8 +6,8 @@
 # pip install --upgrade tencentcloud-sdk-python
 # from operator import mod
 # from xml.dom.minidom import TypeInfo
-import tornado.ioloop
-import tornado.web
+# import tornado.ioloop
+# import tornado.web
 
 import json
 from tencentcloud.common import credential
