@@ -27,7 +27,7 @@
 ```
 pip install requests
 pip install tornado
-pip install dot_env
+pip install python-dotenv
 pip install tencentcloud-sdk-python
 ```
 
