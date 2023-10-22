@@ -13,8 +13,14 @@
 
 <img width="60%" alt="image" border="1" src="https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor/assets/117698857/9df33c47-a05b-42b9-a6d0-176259c4abde">
 
-# 功能阐述
+# Knockd服务端安装使用
 
+```bash
+# change .env file before running.
+python knockd_start.py
+```
+
+# 功能阐述
 ## 服务端主逻辑
 - Knockd服务监听在TCP/8080端口；
 - Lighthouse防火墙默认开放0.0.0.0/0对TCP/8080的访问
@@ -45,7 +51,25 @@ http://61.170.71.133:8080/favico.ico
 
 <img width="80%" alt="image" border="1" src="https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor/assets/117698857/29c6afef-0303-4849-8b74-123944b33930">
 
-# 关键配置文件.env
+# 关键说明
+
+## 服务端HTTP返回的错误信息
+
+为了防止返回数据被中间设备监听或用于特征分析，所有客户端到服务端请求的返回结果都是`HTTP 500`，唯一的区别是返回的内容：
+- 成功：`500 Internal Server Error.`
+- 失败：`500 Internal Server Error`
+
+> 返回字符串可以在`.env`文件中配置
+
+## 安全组规满了怎么办？
+
+每一次敲门成功后，系统都会执行一次规则清理逻辑。`默认会删除30天以前由本敲门程序创建的其他规则。`
+
+> 如果你的客户端长期没有活跃，也没有执行过敲门程序，那么有可能被Knockd服务从防火墙规则中移除。
+
+## 配置文件.env
+
+配置文件`.env`默认放在程序主目录下，也可以在系统环境变量的其他目录，主要配置说明如下：
 
 ```ini
 # 敲门成功的返回信息
@@ -90,8 +114,6 @@ BIND_PORT="8080"
 BIND_IP="0.0.0.0"
 ```
 
-# Knockd服务端安装使用
-```bash
-# change .env file before running.
-python knockd_start.py
-```
+## 客户端如何做到出口IP变更之后自动敲门？
+
+好问题，建议参考：[do-something-when-your-internet-ip-changed](https://github.com/uf1y/do-something-when-your-internet-ip-changed)。
