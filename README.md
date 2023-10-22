@@ -14,7 +14,15 @@
 <img width="60%" alt="image" border="1" src="https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor/assets/117698857/9df33c47-a05b-42b9-a6d0-176259c4abde">
 
 # Knockd服务端安装使用
-## 基本条件
+
+## 网络要求
+
+- 轻量应用服务器的防火墙开放`0.0.0.0/0`对`TCP/80`端口的访问
+- 轻量应用服务器主机防火墙处于关闭状态
+
+## 组件要求
+
+`Python 3.0`是基本要求，在此基础上安装如下模块：
 
 ```
 pip install requests
@@ -26,7 +34,9 @@ pip install tencentcloud-sdk-python
 ## 安装运行
 ```bash
 git clone --depth=1 https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor.git
+cd TencentCloud-Lighthouse-IP-Knockdoor
 mv .env.sample .env
+# Windows: move .env.sample .env
 # 使用前请先修改配置文件: vi .env
 python knockd_start.py
 ```
