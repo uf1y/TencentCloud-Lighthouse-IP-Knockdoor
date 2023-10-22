@@ -152,7 +152,7 @@ class LightHouse(object):
             ResourceNotFound.FirewallRulesNotFound message:未查询到防火墙规则
             """
             if err.code == 'LimitExceeded.FirewallRulesLimitExceeded':
-                # pass
+                # 可能有坑，建议将来调整。可能清理2天的规则还不够
                 self.clear_knockd_rules(2)
             logging.error(err)
         logging.info(msg)
