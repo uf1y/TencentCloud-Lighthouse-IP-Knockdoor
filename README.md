@@ -1,5 +1,5 @@
 # TencentCloud-Lighthouse-IP-Knockdoor
-一款针对腾讯轻量应用服务器的IP敲门程序。客户端先敲门，然后Kncod开通Lighthouse的防火墙访问策略。
+`腾讯云轻量应用服务器防火墙敲门服务`：一款针对腾讯轻量应用服务器的IP敲门程序。客户端先敲门，然后Kncod开通Lighthouse的防火墙访问策略，允许客户端访问服务器的业务端口。支持多实例，支持TCP和UDP，关键参数可配置。
 
 # 需求场景
 
