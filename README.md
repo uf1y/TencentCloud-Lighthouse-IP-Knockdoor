@@ -43,9 +43,9 @@ python knockd_start.py
 
 # 功能阐述
 ## 服务端主逻辑
-- Knockd服务监听在TCP/8080端口；
-- Lighthouse防火墙默认开放0.0.0.0/0对TCP/8080的访问
-- 客户端敲门请求：http://<KNOCKD_SERVER>:8080/favico.ico
+- Knockd服务监听在`TCP/8080`端口；
+- Lighthouse防火墙默认开放`0.0.0.0/0`对`TCP/8080`的访问
+- 客户端敲门请求：`http://<KNOCKD_SERVER>:8080/favico.ico`，URL可以自定义
 - 服务端识别出客户端IP地址和目标服务的端口（通过配置文件自定义），将IP地址添加到腾讯云轻量应用服务器的防火墙
 
 ## 客户端使用
