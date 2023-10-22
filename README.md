@@ -17,6 +17,7 @@
 ## 基本条件
 
 ```
+pip install requests
 pip install tornado
 pip install dot_env
 pip install tencentcloud-sdk-python
@@ -24,7 +25,9 @@ pip install tencentcloud-sdk-python
 
 ## 安装运行
 ```bash
-# 使用前请先修改配置文件.env
+git clone --depth=1 https://github.com/uf1y/TencentCloud-Lighthouse-IP-Knockdoor.git
+mv .env.sample .env
+# 使用前请先修改配置文件: vi .env
 python knockd_start.py
 ```
 
@@ -32,16 +35,16 @@ python knockd_start.py
 ## 服务端主逻辑
 - Knockd服务监听在TCP/8080端口；
 - Lighthouse防火墙默认开放0.0.0.0/0对TCP/8080的访问
-- 客户端敲门请求：http://<TencentCloud_Lighthouse_IP>:8080/favico.ico
+- 客户端敲门请求：http://<KNOCKD_SERVER>:8080/favico.ico
 - 服务端识别出客户端IP地址和目标服务的端口（通过配置文件自定义），将IP地址添加到腾讯云轻量应用服务器的防火墙
 
 ## 客户端使用
 
 ### HTTP请求格式
 
-```
+```HTML
 GET /favico.ico HTTP/1.1
-Host: 61.170.71.133:8080
+Host: <KNOCKD_SERVER_IP>:8080
 User-Agent: curl/8.1.2
 Accept: */*
 Referer:https://www.baidu..com/
@@ -52,8 +55,12 @@ Location:Offfice_01
 ```bash
 curl  -H "Referer:https://www.baidu..com/" \
       -H "Location:Offfice_01" \
-http://61.170.71.133:8080/favico.ico
+      http://<KNOCKD_SERVER_IP>/favico.ico
 ```
+
+### 其它
+
+你也可以通过其它程序或自动化手段实现敲门请求，例如iOS快捷指令，只要符合HTTP请求格式即可。
 
 ## 防火墙配置结果
 
